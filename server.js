@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const mongoose = requrie("mongoose");
+const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
@@ -8,6 +8,7 @@ const methodOverride = require("method-override");
 const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
+const mainRoutes = require("./routes/main")
 
 // .env config
 require("dotenv").config({ path: "./config/.env"});
@@ -49,6 +50,7 @@ app.use(passport.session());
 app.use(flash());
 
 //Route setup
+app.use("/", mainRoutes);
 
 
 //Server Notification
