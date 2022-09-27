@@ -8,13 +8,17 @@ const methodOverride = require("method-override");
 const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
-const mainRoutes = require("./routes/main")
+const mainRoutes = require("./routes/main");
+const dashboardRoutes = require("./routes/dashboard")
 
 // .env config
 require("dotenv").config({ path: "./config/.env"});
 
 //Connect to Database
 connectDB();
+
+// Passport Config
+require("./config/passport")(passport);
 
 //EJS template
 app.set("view engine", "ejs");
@@ -51,6 +55,7 @@ app.use(flash());
 
 //Route setup
 app.use("/", mainRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 
 //Server Notification
