@@ -13,4 +13,8 @@ router.post("/createBookmark", dashboardController.createBookmark);
 
 router.delete("/deleteBookmark/:id", dashboardController.deleteBookmark);
 
+// Bookmark Categorization
+
+router.put("/completedBookmark/:id", dashboardController.completedBookmark);
+
 module.exports = router;

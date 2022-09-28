@@ -17,9 +17,9 @@ module.exports = {
                 url: req.body.url,
                 user: req.user.id,
                 // caption: req.body.caption,
-                // completed: false,
+                completed: false,
                 // reading: false,
-                // toread: false,
+                // readlist: false,
             });
             console.log("Bookmark saved!");
             res.redirect("/dashboard");
@@ -29,12 +29,20 @@ module.exports = {
     },
     deleteBookmark: async (req, res) => {
         try {
-            let bookmark = await Bookmark.findById({ _id: req.params.id });
-            await Bookmark.remove({ _id: req.params.id });
+            await Bookmark.findByIdAndRemove({ _id: req.params.id });
             console.log("Bookmark Deleted!");
             res.redirect("/dashboard");
         }catch (err) {
             res.redirect("/dashboard")
         }
     },
+    completedBookmark: async (req, res) => {
+    try {
+        await Bookmark.findByIdAndUpdate({ _id: req.params.id }, {completed : true});
+        console.log("Manga completed!");
+        res.redirect("/dashboard");
+    }catch (err) {
+        res.redirect("/dashboard")
+    }
+   }
 };

@@ -19,17 +19,17 @@ const BookmarkSchema = new mongoose.Schema({
     // rating: {
     //     type: Number 
     // },
-    // completed: {
-    //     type: Boolean,
-    //     required: true,
-    // },
+    completed: {
+        type: Boolean,
+        required: true
+    },
     // reading: {
     //     type: Boolean,
-    //     required: true,
+    //     required: true
     // },
-    // toread: {
+    // readlist: {
     //     type: Boolean,
-    //     required: true,
+    //     required: true
     // },
     user: {
         type: mongoose.Schema.Types.ObjectId,

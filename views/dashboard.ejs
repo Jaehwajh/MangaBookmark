@@ -86,34 +86,67 @@
 
       <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold tracking-tight text-gray-900">Welcome back <%= user.userName %> </h1>
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">Welcome back <%= user.userName %> <br> Here's your manga list.</h1>
         </div>
       </header>
 
       <!-- Bookmark Table -->
       <div>
         <div class="overflow-x-auto">
-            <table class="table table-zebra w-full">
+            <table class="table w-full">
                 <tbody>
-                    <% bookmarks.forEach(element => { %>
-                        <tr class="bookmarkItem" data-id="<%=element._id%>">
-                            <th><%=element.title%></th>
-                            <td><button class="btn btn-ghost btn-xs"><a href="<%=element.url%>">Read here</a></button></td>
-                            
-                            <td>
-                                <form
-                                  action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE"
-                                  method="POST"
-                                >
-                                  <button class="btn btn-ghost btn-xs" type="submit">Delete</button>
-                                </form>
-                            </td>
-
-                        </tr>
-                    <% }) %>
+                  <% bookmarks.forEach(element => { %>
+                    <% if(element.completed === false) { %>
+                     <tr class="bookmarkItem hover" data-id="<%=element._id%>">
+                         <th><%=element.title%></th>
+                         <td><button class="btn btn-ghost btn-xs"><a href="<%=element.url%>">Read here</a></button></td>
+                         
+                         <td>
+                             <form action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
+                               <button class="btn btn-ghost btn-xs" type="submit">Delete</button>
+                             </form>
+                         </td>
+             
+                         <td>
+                           <form action="/dashboard/completedBookmark/<%= element._id %>?_method=PUT" method="POST">
+                             <button class="btn btn-ghost btn-xs" type="submit">Complete</button>
+                           </form>
+                         </td>
+                     </tr>
+                   <% } %>
+                 <% }) %>
                 </tbody>
             </table>
       </div>
+
+      <header class="bg-white shadow">
+        <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900">Completed</h>
+        </div>
+      </header>
+
+      <div>
+        <div class="overflow-x-auto">
+            <table class="table w-full">
+                <tbody>
+                    <% bookmarks.forEach(element => { %>
+       <% if(element.completed === true) { %>
+        <tr class="bookmarkItem hover" data-id="<%=element._id%>">
+            <th><%=element.title%></th>
+            <td><button class="btn btn-ghost btn-xs"><a href="<%=element.url%>">Read here</a></button></td>
+            
+            <td>
+                <form action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
+                  <button class="btn btn-ghost btn-xs" type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+      <% } %>
+    <% }) %>
+                </tbody>
+            </table>
+      </div>
+
 
       <!-- Add new bookmarks -->
       <div class="bg-gray-50">

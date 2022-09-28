@@ -6,7 +6,7 @@ const dashboardController = require("../controllers/dashboard");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 // Homepage/dashboard
-router.get("/", homepageController.getHomepage);
+router.get("/homepage", homepageController.getHomepage);
 router.get("/dashboard", ensureAuth, dashboardController.getDashboard);
 
 // Login Page
