@@ -86,7 +86,7 @@
 
       <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold tracking-tight text-gray-900">Welcome back <%= user.userName %> <br> Here's your manga list.</h1>
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">Welcome back <%= user.userName %> <br> Here's your manga list. </h1>
         </div>
       </header>
 
@@ -94,22 +94,41 @@
       <div>
         <div class="overflow-x-auto">
             <table class="table w-full">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
                 <tbody>
                   <% bookmarks.forEach(element => { %>
                     <% if(element.completed === false) { %>
                      <tr class="bookmarkItem hover" data-id="<%=element._id%>">
                          <th><%=element.title%></th>
-                         <td><button class="btn btn-ghost btn-xs"><a href="<%=element.url%>">Read here</a></button></td>
+                         <td><a class="btn btn-ghost" href="<%=element.url%>">Read here</a></td>
                          
                          <td>
                              <form action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
-                               <button class="btn btn-ghost btn-xs" type="submit">Delete</button>
+                               <button class="btn btn-ghost btn-xs" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                               </button>
                              </form>
                          </td>
              
                          <td>
                            <form action="/dashboard/completedBookmark/<%= element._id %>?_method=PUT" method="POST">
-                             <button class="btn btn-ghost btn-xs" type="submit">Complete</button>
+                             <button class="btn btn-ghost btn-xs" type="submit">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-check" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                              </svg>
+                             </button>
                            </form>
                          </td>
                      </tr>
@@ -121,28 +140,45 @@
 
       <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900">Completed</h>
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900">Completed List</h>
         </div>
       </header>
 
       <div>
         <div class="overflow-x-auto">
             <table class="table w-full">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
                 <tbody>
                     <% bookmarks.forEach(element => { %>
-       <% if(element.completed === true) { %>
-        <tr class="bookmarkItem hover" data-id="<%=element._id%>">
-            <th><%=element.title%></th>
-            <td><button class="btn btn-ghost btn-xs"><a href="<%=element.url%>">Read here</a></button></td>
-            
-            <td>
-                <form action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
-                  <button class="btn btn-ghost btn-xs" type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-      <% } %>
-    <% }) %>
+                        <% if(element.completed === true) { %>
+                          <tr class="bookmarkItem hover" data-id="<%=element._id%>">
+                              <th><%=element.title%></th>
+                              <td><button class="btn btn-ghost"><a href="<%=element.url%>">Read here</a></button></td>
+                              
+                              <td>
+                                  <form action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-ghost" type="submit">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                      </svg>
+                                    </button>
+                                  </form>
+                              </td>
+
+                              <td>
+                              
+                              </td>
+                          </tr>
+                        <% } %>
+                      <% }) %>
                 </tbody>
             </table>
       </div>
