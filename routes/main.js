@@ -4,7 +4,7 @@ const authController = require("../controllers/auth");
 const homepageController = require("../controllers/homepage");
 const dashboardController = require("../controllers/dashboard");
 const errorController = require("../controllers/error");
-const { ensureAuth, ensureGuest } = require("../middleware/auth");
+
 
 // Homepage/dashboard
 router.get("/", homepageController.getHomepage);
