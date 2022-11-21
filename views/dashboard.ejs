@@ -105,114 +105,95 @@
                     <p class="text-sm font-medium leading-none text-white">Add Task</p>
                 </button>
             </div>
-            <div class="mt-7 overflow-x-auto">
-                <table class="w-full whitespace-nowrap">
-                    <tbody>
-                        <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
-                            <!-- <td>
-                                <div class="ml-5">
-                                    <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
-                                        <input placeholder="checkbox" type="checkbox" class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" />
-                                        <div class="check-icon hidden bg-indigo-700 text-white rounded-sm">
-                                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg7.svg" alt="check-icon">
-                                        </div>
-                                    </div>
-                                </div>
-                            </td> -->
-                            <!-- title -->
-                            <td class="">
-                                <div class="flex items-center pl-5">
-                                    <p class="text-base font-medium leading-none text-gray-700 dark:text-white  mr-2">Marketing Keynote Presentation</p>
-                                    <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg1.svg" alt="clip">
-                                </div>
-                            </td>
-                            <td class="pl-24">
-                            </td>
-                            <td class="pl-5">
-                            </td>
-                            <td class="pl-5">
-                            </td>
-                            <td class="pl-5">
-                            </td>
-                            <!-- Site URL -->
-                            <td class="pl-5">
-                                <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">Read Here</button>
-                            </td>
-                            <!-- Completed -->
-                            <td class="pl-4">
-                                <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 dark:text-gray-200  py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 dark:hover:bg-gray-700   dark:bg-gray-800  focus:outline-none"></button>
-                            </td>
 
-                            <!-- Delete/edit entry -->
-                            <td>
-                                <div class="relative px-5 pt-2">
-                                    <button class="focus:ring-2 rounded-md focus:outline-none" onclick="dropdownFunction(this)" role="button" aria-label="option">
-                                       <img  class="dropbtn" onclick="dropdownFunction(this)" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown">
-                                    </button>
-                                    <div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6 hidden">
-                                        <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
-                                            <p>Edit</p>
-                                        </div>
-                                        <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
-                                            <p>Delete</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+            <!-- New Bookmark -->
+            <div class="mt-7 overflow-x-auto">
+              <table class="w-full whitespace-nowrap">
+                  <% bookmarks.forEach(element => { %>
+                      <% if(element.completed === false) { %>
+                          <tbody>
+                              <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
+                                  <!-- <td>
+                                      <div class="ml-5">
+                                          <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
+                                              <input placeholder="checkbox" type="checkbox" class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" />
+                                              <div class="check-icon hidden bg-indigo-700 text-white rounded-sm">
+                                                  <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg7.svg" alt="check-icon">
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </td> -->
+                                  <!-- title -->
+                                  <td class="">
+                                      <div class="flex items-center pl-5">
+                                          <p class="text-base font-medium leading-none text-gray-700 dark:text-white  mr-2"><%=element.title%></p>
+                                      </div>
+                                  </td>
+                                  <td class="pl-24">
+                                  </td>
+                                  <td class="pl-5">
+                                  </td>
+                                  <td class="pl-5">
+                                  </td>
+                                  <td class="pl-5">
+                                  </td>
+                                  <!-- Site URL -->
+                                  <td class="pl-5">
+                                      <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">
+                                          <a href="<%=element.url%>">Read Here</a>
+                                      </button>
+                                  </td>
+                                  <!-- Completed -->
+                                  <td class="pl-4">
+                                      <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 dark:text-gray-200  py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 dark:hover:bg-gray-700   dark:bg-gray-800  focus:outline-none" type="submit">
+                                          <form action="/dashboard/completedBookmark/<%= element._id %>?_method=PUT" method="POST">
+                                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-check" viewBox="0 0 16 16">
+                                                 <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                                 <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                                 <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                                               </svg>
+                                              </button>
+                                            </form>
+                                      </button>
+                                  </td>
+          
+                                  <!-- Delete/edit entry -->
+                                  <td>
+                                      <div class="relative px-5 pt-2">
+                                          <button class="focus:ring-2 rounded-md focus:outline-none" onclick="dropdownFunction(this)" role="button" aria-label="option">
+                                             <img  class="dropbtn" onclick="dropdownFunction(this)" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown">
+                                          </button>
+                                          <div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6 hidden">
+                                              <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
+                                                  <p>Edit</p>
+                                              </div>
+                                              <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
+                                                  <form action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
+                                                      <button class="btn btn-ghost btn-xs" type="submit">
+                                                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                       </svg>
+                                                      </button>
+                                                    </form>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                              </tr>
+                          </tbody>
+                     <% } %>
+                 <% }) %>
+              </table>
+          </div>
+          
+        </div>
     <!-- <style>
         .checkbox:checked + .check-icon {
             display: flex;
         }
     </style> -->
 
-      <!-- Bookmark Table -->
-      <div>
-        <div class="overflow-x-auto">
-            <table class="table w-full">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-                <tbody>
-                  <% bookmarks.forEach(element => { %>
-                    <% if(element.completed === false) { %>
-                     <tr class="bookmarkItem hover" data-id="<%=element._id%>">
-                         <th><%=element.title%></th>
-                         <td><a class="btn btn-ghost" href="<%=element.url%>">Read here</a></td>
-                         
-                         <td>
-                             <form action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
-                               <button class="btn btn-ghost btn-xs" type="submit">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                </svg>
-                               </button>
-                             </form>
-                         </td>
-             
-                         <td>
-                           <form action="/dashboard/completedBookmark/<%= element._id %>?_method=PUT" method="POST">
-                             <button class="btn btn-ghost btn-xs" type="submit">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-check" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
-                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
-                              </svg>
-                             </button>
-                           </form>
-                         </td>
-                     </tr>
-                   <% } %>
-                 <% }) %>
-                </tbody>
-            </table>
-      </div>
 
       <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
