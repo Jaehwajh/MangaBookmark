@@ -101,7 +101,7 @@
                         </div>
                     </a>
                 </div>
-                <button onclick="popuphandler(true)" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                <button onclick="modalHandler(true)" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
                     <p class="text-sm font-medium leading-none text-white">Add Manga</p>
                 </button>
             </div>
@@ -268,7 +268,37 @@
         </div>
       </div>
 
+      <div class="py-12 z-10 absolute top-0 right-0 bottom-0 left-0 hidden" id="modal">
+        <div class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
+            <div class="relative py-8 px-5 md:px-10 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-md rounded border border-gray-400">
+                <div class="w-full flex justify-start text-gray-600 mb-3">
+                   
+                </div>
+                <h1 class="text-gray-800 dark:text-white  font-lg font-bold tracking-normal leading-tight mb-4">Enter Manga Details</h1>
+                <label for="name" class="text-gray-800 dark:text-white  text-sm font-bold leading-tight tracking-normal">Manga Title</label>
+                <input id="name" class="mb-5 mt-2 text-gray-600 dark:bg-gray-900 dark:text-white dark:placeholder-gray-200 dark:border-gray-700 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Manga" />
+               
+                <label for="cvc" class="text-gray-800 dark:text-white  text-sm font-bold leading-tight tracking-normal">URL</label>
+                <div class="relative mb-5 mt-2">
+                    <input id="URL" class="mb-8 text-gray-600 dark:bg-gray-900 dark:text-white dark:placeholder-gray-200 dark:border-gray-700 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="URL" />
+                </div>
+                <div class="flex items-center justify-start w-full">
+                    <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">Submit</button>
+                    <button class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler()">Cancel</button>
+                </div>
+                <button class="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600" onclick="modalHandler()" aria-label="close modal" role="button">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  class="icon icon-tabler icon-tabler-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
 
       <script src="/js/main.js"></script>
+
 </body>
 </html>
