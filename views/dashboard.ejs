@@ -76,7 +76,7 @@
 
       <!-- New Bookmark Table -->
 
-      <div class="sm:px-6 w-full">
+      <div class="sm:px-36 w-full min-h-screen">
         <div class="px-4 md:px-10 py-4 md:py-7">
             <div class="flex items-center justify-between">
                 <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white">Mangas</p>
@@ -85,21 +85,21 @@
         <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10">
             <div class="sm:flex items-center justify-between">
                 <div class="flex items-center">
-                    <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800" href=" javascript:void(0)">
+                    <button class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800 cursor-pointer" onclick="showAll()">
                         <div class="py-2 px-8 bg-indigo-100 text-indigo-700 rounded-full">
-                            <p>All</p>
+                            <p>Reading</p>
                         </div>
-                    </a>
-                    <a class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
+                      </button>
+                    <button class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8 cursor-pointer" onclick="showCompleted()">
                         <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full ">
                             <p>Completed</p>
                         </div>
-                    </a>
-                    <a class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
+                      </button>
+                    <button class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8 cursor-pointer" href="javascript:void(0)">
                         <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full ">
-                            <p>Reading</p>
+                            <p>All Mangas</p>
                         </div>
-                    </a>
+                      </button>
                 </div>
                 <button onclick="modalHandler(true)" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
                     <p class="text-sm font-medium leading-none text-white">Add Manga</p>
@@ -107,10 +107,10 @@
             </div>
 
             <!-- New Bookmark -->
-            <div class="mt-7 overflow-x-auto">
+            <div class="mt-7 overflow-y-auto" id="all">
               <table class="w-full whitespace-nowrap">
                   <% bookmarks.forEach(element => { %>
-                      <% if(element.completed === false) { %>
+                    <% if(element.completed === false) { %>
                           <tbody>
                               <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
                                   <!-- <td>
@@ -174,21 +174,14 @@
                                 </td>
                               </tr>
                           </tbody>
-                     <% } %>
+                        <% } %>
                  <% }) %>
               </table>
           </div>
-          
-        </div>
-    <!-- <style>
-        .checkbox:checked + .check-icon {
-            display: flex;
-        }
-    </style> -->
 
-    <!-- Completed List -->
+          <!-- Completed List -->
 
-    <div class="mt-7 overflow-x-auto">
+    <div class="mt-7 overflow-y-auto hidden" id="completed">
       <table class="w-full whitespace-nowrap">
           <% bookmarks.forEach(element => { %>
               <% if(element.completed === true) { %>
@@ -252,6 +245,13 @@
          <% }) %>
       </table>
   </div>
+          
+        </div>
+    <!-- <style>
+        .checkbox:checked + .check-icon {
+            display: flex;
+        }
+    </style> -->
 
 
  <!--Add New bookmark  -->
