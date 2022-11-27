@@ -246,13 +246,79 @@
       </table>
   </div>
           
-        </div>
     <!-- <style>
         .checkbox:checked + .check-icon {
             display: flex;
         }
     </style> -->
 
+
+    <!-- All Bookmarks -->
+
+    <div class="mt-7 overflow-y-auto hidden" id="completed">
+      <table class="w-full whitespace-nowrap">
+          <% bookmarks.forEach(element => { %>
+              <% if(element.completed === true) { %>
+                  <tbody>
+                      <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
+                          <!-- <td>
+                              <div class="ml-5">
+                                  <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
+                                      <input placeholder="checkbox" type="checkbox" class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" />
+                                      <div class="check-icon hidden bg-indigo-700 text-white rounded-sm">
+                                          <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg7.svg" alt="check-icon">
+                                      </div>
+                                  </div>
+                              </div>
+                          </td> -->
+                          <!-- title -->
+                          <td class="">
+                              <div class="flex items-center pl-5">
+                                  <p class="text-base font-medium leading-none text-gray-700 dark:text-white  mr-2"><%=element.title%></p>
+                              </div>
+                          </td>
+                          <td class="pl-24">
+                          </td>
+                          <td class="pl-5">
+                          </td>
+                          <td class="pl-5">
+                          </td>
+                          <td class="pl-5">
+                          </td>
+                          <!-- Site URL -->
+                          <td class="pl-5">
+                              <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">
+                                  <a href="<%=element.url%>">Read Here</a>
+                              </button>
+                          </td>
+                          <!-- Completed -->
+                          <td class="pl-4">
+                              
+                          </td>
+  
+                          <!-- Delete/edit entry -->
+                          <td>
+                              <div class="dropdown relative px-4 pt-2 mb-3" >
+                                <label tabindex="0" class="btn m-1"><img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown"></label>
+                                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-22">
+                                  <li>
+                                    <form class= "m-0" tabindex="0" action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
+                                      <button class="text-xs" type="submit">Delete</button>
+                                    </form>
+                                  </li>
+  
+                                  <li>
+                                    <a class="text-xs">Edit</a>
+                                  </li>
+                                </ul>
+                              </div>
+                          </td>
+                      </tr>
+                  </tbody>
+             <% } %>
+         <% }) %>
+      </table>
+  </div>
 
  <!--Add New bookmark  -->
       <div class="py-12 z-10 absolute top-0 right-0 bottom-0 left-0 hidden" id="modal">
