@@ -34,6 +34,7 @@ function fadeIn(el, display) {
 // List Changing
 const completed = document.getElementById('completed')
 const all = document.getElementById('all')
+const current = document.getElementById('current')
 
 function showCompleted() {
     if(completed.style.display === "none"){

@@ -85,7 +85,7 @@
         <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10">
             <div class="sm:flex items-center justify-between">
                 <div class="flex items-center">
-                    <button class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800 cursor-pointer" onclick="showAll()">
+                    <button class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800 cursor-pointer" onclick="showCurrent()">
                         <div class="py-2 px-8 bg-indigo-100 text-indigo-700 rounded-full">
                             <p>Reading</p>
                         </div>
@@ -95,7 +95,7 @@
                             <p>Completed</p>
                         </div>
                       </button>
-                    <button class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8 cursor-pointer" href="javascript:void(0)">
+                    <button class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8 cursor-pointer" onclick="showAll()">
                         <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full ">
                             <p>All Mangas</p>
                         </div>
@@ -107,7 +107,7 @@
             </div>
 
             <!-- New Bookmark -->
-            <div class="mt-7 overflow-y-auto" id="all">
+            <div class="mt-7 overflow-y-auto" id="current">
               <table class="w-full whitespace-nowrap">
                   <% bookmarks.forEach(element => { %>
                     <% if(element.completed === false) { %>
@@ -255,10 +255,9 @@
 
     <!-- All Bookmarks -->
 
-    <div class="mt-7 overflow-y-auto hidden" id="completed">
+    <div class="mt-7 overflow-y-auto hidden" id="all">
       <table class="w-full whitespace-nowrap">
           <% bookmarks.forEach(element => { %>
-              <% if(element.completed === true) { %>
                   <tbody>
                       <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
                           <!-- <td>
@@ -315,7 +314,6 @@
                           </td>
                       </tr>
                   </tbody>
-             <% } %>
          <% }) %>
       </table>
   </div>
