@@ -76,13 +76,13 @@
 
       <!-- New Bookmark Table -->
 
-      <div class="sm:px-36 w-full min-h-screen">
+      <div class="sm:px-36 w-full h-5/6">
         <div class="px-4 md:px-10 py-4 md:py-7">
             <div class="flex items-center justify-between">
                 <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white">Mangas</p>
             </div>
         </div>
-        <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10">
+        <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-md">
             <div class="sm:flex items-center justify-between">
                 <div class="flex items-center">
                     <button class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800 cursor-pointer" onclick="showCurrent()">
@@ -104,15 +104,15 @@
                 <button onclick="modalHandler(true)" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
                     <p class="text-sm font-medium leading-none text-white">Add Manga</p>
                 </button>
-            </div>
+          </div>
 
             <!-- New Bookmark -->
-            <div class="mt-7 overflow-y-auto" id="current">
+            <div class="mt-7" id="current">
               <table class="w-full whitespace-nowrap">
                   <% bookmarks.forEach(element => { %>
                     <% if(element.completed === false) { %>
                           <tbody>
-                              <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
+                              <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600 rounded">
                                   <!-- <td>
                                       <div class="ml-5">
                                           <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
@@ -180,143 +180,144 @@
           </div>
 
           <!-- Completed List -->
-
-    <div class="mt-7 overflow-y-auto hidden" id="completed">
-      <table class="w-full whitespace-nowrap">
-          <% bookmarks.forEach(element => { %>
-              <% if(element.completed === true) { %>
-                  <tbody>
-                      <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
-                          <!-- <td>
-                              <div class="ml-5">
-                                  <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
-                                      <input placeholder="checkbox" type="checkbox" class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" />
-                                      <div class="check-icon hidden bg-indigo-700 text-white rounded-sm">
-                                          <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg7.svg" alt="check-icon">
-                                      </div>
-                                  </div>
-                              </div>
-                          </td> -->
-                          <!-- title -->
-                          <td class="">
-                              <div class="flex items-center pl-5">
-                                  <p class="text-base font-medium leading-none text-gray-700 dark:text-white  mr-2"><%=element.title%></p>
-                              </div>
-                          </td>
-                          <td class="pl-24">
-                          </td>
-                          <td class="pl-5">
-                          </td>
-                          <td class="pl-5">
-                          </td>
-                          <td class="pl-5">
-                          </td>
-                          <!-- Site URL -->
-                          <td class="pl-5">
-                              <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">
-                                  <a href="<%=element.url%>">Read Here</a>
-                              </button>
-                          </td>
-                          <!-- Completed -->
-                          <td class="pl-4">
-                              
-                          </td>
-  
-                          <!-- Delete/edit entry -->
-                          <td>
-                              <div class="dropdown relative px-4 pt-2 mb-3" >
-                                <label tabindex="0" class="btn m-1"><img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown"></label>
-                                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-22">
-                                  <li>
-                                    <form class= "m-0" tabindex="0" action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
-                                      <button class="text-xs" type="submit">Delete</button>
-                                    </form>
-                                  </li>
-  
-                                  <li>
-                                    <a class="text-xs">Edit</a>
-                                  </li>
-                                </ul>
-                              </div>
-                          </td>
-                      </tr>
-                  </tbody>
-             <% } %>
-         <% }) %>
-      </table>
-  </div>
-          
-    <!-- <style>
-        .checkbox:checked + .check-icon {
-            display: flex;
-        }
-    </style> -->
-
-
-    <!-- All Bookmarks -->
-
-    <div class="mt-7 overflow-y-auto hidden" id="all">
-      <table class="w-full whitespace-nowrap">
-          <% bookmarks.forEach(element => { %>
-                  <tbody>
-                      <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
-                          <!-- <td>
-                              <div class="ml-5">
-                                  <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
-                                      <input placeholder="checkbox" type="checkbox" class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" />
-                                      <div class="check-icon hidden bg-indigo-700 text-white rounded-sm">
-                                          <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg7.svg" alt="check-icon">
-                                      </div>
-                                  </div>
-                              </div>
-                          </td> -->
-                          <!-- title -->
-                          <td class="">
-                              <div class="flex items-center pl-5">
-                                  <p class="text-base font-medium leading-none text-gray-700 dark:text-white  mr-2"><%=element.title%></p>
-                              </div>
-                          </td>
-                          <td class="pl-24">
-                          </td>
-                          <td class="pl-5">
-                          </td>
-                          <td class="pl-5">
-                          </td>
-                          <td class="pl-5">
-                          </td>
-                          <!-- Site URL -->
-                          <td class="pl-5">
-                              <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">
-                                  <a href="<%=element.url%>">Read Here</a>
-                              </button>
-                          </td>
-                          <!-- Completed -->
-                          <td class="pl-4">
-                              
-                          </td>
-  
-                          <!-- Delete/edit entry -->
-                          <td>
-                              <div class="dropdown relative px-4 pt-2 mb-3" >
-                                <label tabindex="0" class="btn m-1"><img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown"></label>
-                                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-22">
-                                  <li>
-                                    <form class= "m-0" tabindex="0" action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
-                                      <button class="text-xs" type="submit">Delete</button>
-                                    </form>
-                                  </li>
-  
-                                  <li>
-                                    <a class="text-xs">Edit</a>
-                                  </li>
-                                </ul>
-                              </div>
-                          </td>
-                      </tr>
-                  </tbody>
-         <% }) %>
-      </table>
-  </div>
+          <div class="mt-7 overflow-y-auto hidden" id="completed">
+            <table class="w-full whitespace-nowrap">
+                <% bookmarks.forEach(element => { %>
+                    <% if(element.completed === true) { %>
+                        <tbody>
+                            <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
+                                <!-- <td>
+                                    <div class="ml-5">
+                                        <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
+                                            <input placeholder="checkbox" type="checkbox" class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" />
+                                            <div class="check-icon hidden bg-indigo-700 text-white rounded-sm">
+                                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg7.svg" alt="check-icon">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td> -->
+                                <!-- title -->
+                                <td class="">
+                                    <div class="flex items-center pl-5">
+                                        <p class="text-base font-medium leading-none text-gray-700 dark:text-white  mr-2"><%=element.title%></p>
+                                    </div>
+                                </td>
+                                <td class="pl-24">
+                                </td>
+                                <td class="pl-5">
+                                </td>
+                                <td class="pl-5">
+                                </td>
+                                <td class="pl-5">
+                                </td>
+                                <!-- Site URL -->
+                                <td class="pl-5">
+                                    <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">
+                                        <a href="<%=element.url%>">Read Here</a>
+                                    </button>
+                                </td>
+                                <!-- Completed -->
+                                <td class="pl-4">
+                                    
+                                </td>
+        
+                                <!-- Delete/edit entry -->
+                                <td>
+                                    <div class="dropdown relative px-4 pt-2 mb-3" >
+                                      <label tabindex="0" class="btn m-1"><img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown"></label>
+                                      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-22">
+                                        <li>
+                                          <form class= "m-0" tabindex="0" action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
+                                            <button class="text-xs" type="submit">Delete</button>
+                                          </form>
+                                        </li>
+        
+                                        <li>
+                                          <a class="text-xs">Edit</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                   <% } %>
+               <% }) %>
+            </table>
+        </div>
+                
+          <!-- <style>
+              .checkbox:checked + .check-icon {
+                  display: flex;
+              }
+          </style> -->
+      
+      
+          <!-- All Bookmarks -->
+      
+          <div class="mt-7 overflow-y-auto hidden" id="all">
+            <table class="w-full whitespace-nowrap">
+                <% bookmarks.forEach(element => { %>
+                        <tbody>
+                            <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
+                                <!-- <td>
+                                    <div class="ml-5">
+                                        <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
+                                            <input placeholder="checkbox" type="checkbox" class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" />
+                                            <div class="check-icon hidden bg-indigo-700 text-white rounded-sm">
+                                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg7.svg" alt="check-icon">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td> -->
+                                <!-- title -->
+                                <td class="">
+                                    <div class="flex items-center pl-5">
+                                        <p class="text-base font-medium leading-none text-gray-700 dark:text-white  mr-2"><%=element.title%></p>
+                                    </div>
+                                </td>
+                                <td class="pl-24">
+                                </td>
+                                <td class="pl-5">
+                                </td>
+                                <td class="pl-5">
+                                </td>
+                                <td class="pl-5">
+                                </td>
+                                <!-- Site URL -->
+                                <td class="pl-5">
+                                    <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">
+                                        <a href="<%=element.url%>">Read Here</a>
+                                    </button>
+                                </td>
+                                <!-- Completed -->
+                                <td class="pl-4">
+                                    
+                                </td>
+        
+                                <!-- Delete/edit entry -->
+                                <td>
+                                    <div class="dropdown relative px-4 pt-2 mb-3" >
+                                      <label tabindex="0" class="btn m-1"><img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown"></label>
+                                      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-22">
+                                        <li>
+                                          <form class= "m-0" tabindex="0" action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
+                                            <button class="text-xs" type="submit">Delete</button>
+                                          </form>
+                                        </li>
+        
+                                        <li>
+                                          <a class="text-xs">Edit</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+               <% }) %>
+            </table>
+        </div>
+      </div>
+    </div>
 
  <!--Add New bookmark  -->
       <div class="py-12 z-10 absolute top-0 right-0 bottom-0 left-0 hidden" id="modal">
@@ -325,7 +326,8 @@
               <div class="w-full flex justify-start text-gray-600 mb-3">
                    
                 <form action="/dashboard/createBookmark" method="POST"> 
-            </div>
+              </div>
+
                 <h1 class="text-gray-800 dark:text-white  font-lg font-bold tracking-normal leading-tight mb-4">Enter Manga Details</h1>
                 <label for="title" class="text-gray-800 dark:text-white  text-sm font-bold leading-tight tracking-normal">Manga Title</label>
                 <input type="text" name="title" id="title" class="mb-5 mt-2 text-gray-600 dark:bg-gray-900 dark:text-white dark:placeholder-gray-200 dark:border-gray-700 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Manga" />
@@ -338,6 +340,7 @@
 
                 <div class="flex items-center justify-start w-full">
                     <button type="submit" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">Submit</button>
+                </form>
                     <button class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler()">Cancel</button>
                 </div>
 
@@ -348,13 +351,11 @@
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                 </button>
-              </form>
           </div>
         </div>
       </div>
 
+      <%- include("partials/footer") -%> 
 
       <script src="/js/main.js"></script>
-
 </body>
-</html>
