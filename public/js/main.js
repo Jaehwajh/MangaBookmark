@@ -36,20 +36,10 @@ const completed = document.getElementById('completed')
 const all = document.getElementById('all')
 const current = document.getElementById('current')
 
-function showCompleted() {
-    if(completed.style.display === "none"){
-        completed.style.display = "block"
-        all.style.display = "none"
-    }else{
-        completed.style.display = "none"
-    }
-}
-
 function showAll() {
     if(all.style.display === "none"){
-        all.style.display = "block"
-        completed.style.display = "none"
+        current.style.display = "none"
     }else{
-        all.style.display = 'none'
+        all.style.display = "block"
     }
 }
