@@ -5,6 +5,8 @@ const homepageController = require("../controllers/homepage");
 const dashboardController = require("../controllers/dashboard");
 const errorController = require("../controllers/error");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
+const recommendationsController = require("../controllers/recommendations");
+const hotController = require("../controllers/hot.js")
 
 
 // Homepage/dashboard
@@ -24,5 +26,11 @@ router.post("/signup", authController.postSignup);
 
 //Error Page
 router.get("/error", errorController.getError);
+
+// Recommedations Page
+router.get("/recommendations", recommendationsController.getRecommendations);
+
+// Hot page
+router.get("/hot", hotController.getHot);
 
 module.exports = router;
