@@ -85,21 +85,21 @@
         <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-md">
             <div class="sm:flex items-center justify-between">
                 <div class="flex items-center">
-                    <button class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800 cursor-pointer" onclick="showCurrent()">
-                        <div class="py-2 px-8 bg-indigo-100 text-indigo-700 rounded-full">
+                  <div class=" ml-4 sm:ml-8">
+                    <button class="mx-2 my-2 transition duration-150 ease-in-out hover:bg-indigo-100 hover:text-indigo-700 rounded-full text-gray-600 dark:text-gray-200 px-8 py-3 focus:outline-none focus:ring-1 focus:ring-offset-1" onclick="showCurrent()">
                             <p>Reading</p>
-                        </div>
                       </button>
-                    <button class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8 cursor-pointer" onclick="showCompleted()">
-                        <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full ">
+                  </div>
+                  <div class="ml-4 sm:ml-8">
+                    <button class="mx-2 my-2 transition duration-150 ease-in-out hover:bg-indigo-100 hover:text-indigo-700 rounded-full text-gray-600 dark:text-gray-200 px-8 py-3 focus:outline-none focus:ring-1 focus:ring-offset-1"  onclick="showCompleted()">
                             <p>Completed</p>
-                        </div>
                       </button>
-                    <button class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8 cursor-pointer" onclick="showAll()">
-                        <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full ">
+                  </div>
+                  <div class="ml-4 sm:ml-8">
+                    <button class="mx-2 my-2 transition duration-150 ease-in-out hover:bg-indigo-100 hover:text-indigo-700 rounded-full text-gray-600 dark:text-gray-200 px-8 py-3 focus:outline-none focus:ring-1 focus:ring-offset-1" onclick="showAll()">
                             <p>All Mangas</p>
-                        </div>
                       </button>
+                  </div>
                 </div>
                 <button onclick="modalHandler(true)" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
                     <p class="text-sm font-medium leading-none text-white">Add Manga</p>
