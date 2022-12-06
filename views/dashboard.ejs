@@ -37,11 +37,11 @@
               <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
+                  <a href="/dashboard" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
       
-                  <a href="/error" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Recommendations</a>
+                  <a href="/recommendations" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Recommendations</a>
       
-                  <a href="/error" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">What's HOT</a>
+                  <a href="/hot" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">What's HOT</a>
       
                   <!-- <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a> -->
                 </div>
@@ -57,11 +57,11 @@
         <div class="sm:hidden" id="mobile-menu">
           <div class="space-y-1 px-2 pt-2 pb-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
+            <a href="/dashboard" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
       
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Recommendations</a>
+            <a href="/recommendations" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Recommendations</a>
       
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">What's HOT</a>
+            <a href="/hot" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">What's HOT</a>
       
             <!-- <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a> -->
           </div>
@@ -76,13 +76,13 @@
 
       <!-- New Bookmark Table -->
 
-      <div class="sm:px-36 w-full h-5/6">
+      <div class="sm:px-36 w-full h-auto">
         <div class="px-4 md:px-10 py-4 md:py-7">
             <div class="flex items-center justify-between">
                 <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white">Mangas</p>
             </div>
         </div>
-        <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-md">
+        <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-md pb-10 mb-24">
             <div class="sm:flex items-center justify-between">
                 <div class="flex items-center">
                   <div class=" ml-4 sm:ml-8">
@@ -107,7 +107,7 @@
           </div>
 
             <!-- New Bookmark -->
-            <div class="mt-7" id="current">
+            <div class="mt-7 overflow-y-auto h-auto" id="current">
               <table class="w-full whitespace-nowrap">
                   <% bookmarks.forEach(element => { %>
                     <% if(element.completed === false) { %>
@@ -254,7 +254,7 @@
       
           <!-- All Bookmarks -->
       
-          <div class="mt-7 overflow-y-auto hidden" id="all">
+          <div class="mt-7 h-auto overflow-y-auto hidden" id="all">
             <table class="w-full whitespace-nowrap">
                 <% bookmarks.forEach(element => { %>
                         <tbody>
