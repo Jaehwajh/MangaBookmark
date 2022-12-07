@@ -76,13 +76,13 @@
 
       <!-- New Bookmark Table -->
 
-      <div class="sm:px-36 w-full h-auto">
+      <div class="sm:px-36 w-full min-h-screen mb-24">
         <div class="px-4 md:px-10 py-4 md:py-7">
             <div class="flex items-center justify-between">
                 <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white">Mangas</p>
             </div>
         </div>
-        <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-md pb-10 mb-24">
+        <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-md pb-10">
             <div class="sm:flex items-center justify-between">
                 <div class="flex items-center">
                   <div class=" ml-4 sm:ml-8">
@@ -107,7 +107,7 @@
           </div>
 
             <!-- New Bookmark -->
-            <div class="mt-7 overflow-y-auto h-auto" id="current">
+            <div class="mt-7 h-auto" id="current">
               <table class="w-full whitespace-nowrap">
                   <% bookmarks.forEach(element => { %>
                     <% if(element.completed === false) { %>
@@ -180,7 +180,7 @@
           </div>
 
           <!-- Completed List -->
-          <div class="mt-7 overflow-y-auto hidden" id="completed">
+          <div class="mt-7 h-auto hidden" id="completed">
             <table class="w-full whitespace-nowrap">
                 <% bookmarks.forEach(element => { %>
                     <% if(element.completed === true) { %>
@@ -254,7 +254,7 @@
       
           <!-- All Bookmarks -->
       
-          <div class="mt-7 h-auto overflow-y-auto hidden" id="all">
+          <div class="mt-7 h-auto hidden" id="all">
             <table class="w-full whitespace-nowrap">
                 <% bookmarks.forEach(element => { %>
                         <tbody>
