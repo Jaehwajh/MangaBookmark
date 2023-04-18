@@ -10,6 +10,15 @@ const UserSchema = new mongoose.Schema({
         type: String, 
         unique: true
     },
+    profilePicture: {
+      type: String,
+    },
+    cloudinaryId: {
+      type: String,
+    },
+    intro: {
+      type: String,
+    },
     password: String,
 });
 
