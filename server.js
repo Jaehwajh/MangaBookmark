@@ -20,7 +20,7 @@ connectDB();
 // Passport Config
 require("./config/passport")(passport);
 
-//EJS template
+//EJS template  
 app.set("view engine", "ejs");
 
 //Static Folder
