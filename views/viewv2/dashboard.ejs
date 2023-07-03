@@ -88,6 +88,95 @@
                 <% }) %>
             </table>
         </div>
+
+        <!-- completed list -->
+
+        <div class="">
+            <table class="">
+                <% bookmarks.forEach(element => { %>
+                    <% if(element.completed === true){ %>
+                        <tbody>
+                            <tr tabindex="0" class="">
+                                <td class="">
+
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="">
+                                    <a href="" class=""></a>
+                                </td>
+                                <td class="">
+
+                                </td>
+
+                                <td>
+                                    <div class="dropdown relative px-4 pt-2 mb-3" >
+                                      <label tabindex="0" class="btn m-1"><img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown"></label>
+                                      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-22">
+                                        <li>
+                                          <form class= "m-0" tabindex="0" action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
+                                            <button class="text-xs" type="submit">Delete</button>
+                                          </form>
+                                        </li>
+        
+                                        <li>
+                                          <a class="text-xs">Edit</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    <% } %>
+                <% }) %>
+            </table>
+        </div>
+
+        <!-- all bookmarks -->
+        <div class="">  
+            <table class="">
+                <% bookmarks.forEach(element => { %>
+                    <tbody>
+                        <tr tabindex="0" class="">
+
+                        </tr>
+                        <td class="">
+                            <div class="">
+                                <p></p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a href=""></a>
+                        </td>
+                        <td class="">
+
+                        </td>
+                        <td>
+                            <div class="dropdown relative px-4 pt-2 mb-3" >
+                              <label tabindex="0" class="btn m-1"><img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown"></label>
+                              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-22">
+                                <li>
+                                  <form class= "m-0" tabindex="0" action="/dashboard/deleteBookmark/<%= element._id %>?_method=DELETE" method="POST">
+                                    <button class="text-xs" type="submit">Delete</button>
+                                  </form>
+                                </li>
+
+                                <li>
+                                  <a class="text-xs">Edit</a>
+                                </li>
+                              </ul>
+                            </div>
+                        </td>
+                    </tbody>
+                <% }) %>
+            </table>
+        </div>
     </div>
 </div>
 
