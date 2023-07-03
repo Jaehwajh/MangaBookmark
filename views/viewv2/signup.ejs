@@ -1,7 +1,57 @@
 <%- include('/partials/header') -%>
     <div class="container">
-        <div>
+        <div class="">
+            <div class="">
+                <!-- EJS error message -->
+        <% if (locals.messages.errors) { %>
+            <% messages.errors.forEach( el => { %>
+                <div class="alert alert-danger"><%= el.msg %></div>
+            <% }) %>    
+        <% } %>
+        <% if (locals.messages.info) { %>
+            <% messages.info.forEach( el => { %>
+                <div class="alert alert-info"><%= el.msg %></div>
+            <% }) %>    
+        <% } %>
+            </div>
 
+            <div class="">
+                <h2 class="">Create your account</h2>
+                <p class="">
+                    Or <br>
+                    already have an account? Sign in <a href="/login" class="">here</a>
+                </p>
+            </div>
+
+            <div class="">
+                <form class="mt-8 space-y-6" action="/signup" method="POST">
+                    <input type="hidden" name="remember" value="true">
+                    <div class="-space-y-px rounded-md shadow-sm">
+                        <div>
+                            <label for="userName" class="sr-only">Username</label>
+                            <input id="userName" name="userName" type="userName" required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Username">
+                        </div>
+                      <div>
+                        <label for="email-address" class="sr-only">Email address</label>
+                        <input id="email-address" name="email" type="email"  required class="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Email address">
+                      </div>
+                      <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input id="password" name="password" type="password"  required class="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Password">
+                      </div>
+                      <div>
+                        <label for="Re-enter-password" class="sr-only">Re-enter Password</label>
+                        <input id="confirmPassword" name="confirmPassword" type="password"  required class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Re-enter Password">
+                      </div>
+                    </div>
+            
+                    <div>
+                      <button type="submit" class="">
+                        Create account
+                      </button>
+                    </div>
+                  </form>
+            </div>
         </div>
     </div>
 <%- include('/partials/footer') -%>
