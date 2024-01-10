@@ -3,13 +3,39 @@
     <div class="">
         <!-- Navbar -->
         <div class="">
+            <div class="">
+                <nav class="">
 
+                </nav>
+            </div>
         </div>
 
         <!-- Dashboard-->
         <div class="">
+            <!-- Adding bookmarks -->
             <div class="">
+                <form action="/main/createBookmark" method="post">
+                    <h1 class="text-gray-800 dark:text-white  font-lg font-bold tracking-normal leading-tight mb-4">Enter Manga Details</h1>
+                    <label for="title" class="text-gray-800 dark:text-white  text-sm font-bold leading-tight tracking-normal">Manga Title</label>
+                    <input type="text" name="title" id="title" class="mb-5 mt-2 text-gray-600 dark:bg-gray-900 dark:text-white dark:placeholder-gray-200 dark:border-gray-700 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Manga" />
+                
+                    <label for="url" class="text-gray-800 dark:text-white  text-sm font-bold leading-tight tracking-normal">URL</label>
 
+                    <div class="relative mb-5 mt-2">
+                        <input type="text" name="url" id="url" class="mb-8 text-gray-600 dark:bg-gray-900 dark:text-white dark:placeholder-gray-200 dark:border-gray-700 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="URL" />
+                    </div>
+
+                    <div class="flex items-center justify-start w-full">
+
+                    <button type="submit" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">Submit</button>
+                </form>
+            </div>
+
+            <!-- Manga List -->
+            <div class="">
+                <div class="">
+
+                </div>
             </div>
         </div>
     </div>

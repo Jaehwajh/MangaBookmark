@@ -6,6 +6,7 @@ const MongoStore = require("connect-mongo");
 const methodOverride = require("method-override");
 const flash = require("express-flash");
 const logger = require("morgan");
+const mainRouter = require("./controllers/main");
 
 // Dot env
 require("dotenv").config();
@@ -40,3 +41,7 @@ connectDB();
 app.listen(process.env.PORT, () =>{
     console.log("Test Build Online")
 });
+
+
+// Routes
+app.use("/main", mainRouter);
